@@ -1,0 +1,25 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<section class="h-screen">
+ 
+    <div class="w-[100%] flex justify-center">
+        <div class="w-[80%] flex flex-col justify-center h-screen items-center">
+            {% for post in posts %}
+            <a href="">
+                <div class="flex flex-col items-center w-[400px]">
+                    <figure class="w-[400px] h-[400px] bg-cover bg-center bg-[url('{{ post.image }}')]">
+                        
+                    </figure>
+                    <div class="bg-[#0D1C26] w-[100%] p-3">
+                        <h1 class="text-[#6B98BF] font-['Teko'] xl:text-2xl xl:text-5xl text-4xl hover:text-white transition">{{ post.title }}</h1>
+                        <p class="text-[#6B98BF] font-['Ubuntu'] xl:text-lg xl:text-3xl text-xl hover:text-white transition">{{ post.subtitle }}     </p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+    </div>
+
+
+</section>
+{% endblock %}

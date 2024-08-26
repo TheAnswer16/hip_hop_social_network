@@ -1,0 +1,49 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+    <section class="h-screen">
+        <div class="flex w-[100%] justify-center">
+            <div class="flex w-[80%] flex-col justify-center h-screen">
+                <div class="flex items-center">
+                    <div>
+                        {% if user.profile_picture %}
+                            <img src="{{ user.profile_picture }}" alt="profile" class="rounded-full w-24 h-24">
+                            <p>aaa</p>
+                        {% else %}
+                            {% if user.gender == "M" %}
+                                 <img src="https://avatar.iran.liara.run/public/boy" alt="profile" class="rounded-full w-24 h-24">
+                             {% elif user.gender == "F" %}
+                                <img src="https://avatar.iran.liara.run/public/girl" alt="profile" class="rounded-full w-24 h-24">
+                            {% else %}
+                                <img src="https://avatar.iran.liara.run/public" alt="profile" class="rounded-full w-24 h-24">
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-[#6B98BF] font-['Teko'] xl:text-2xl xl:text-7xl text-4xl hover:text-white transition">{{ user.username }}</h1>
+                        <p class="text-[#6B98BF] font-['Ubuntu'] xl:text-lg xl:text-2xl text-xl hover:text-white transition">{{ user.full_name }}</p>
+                    </div>
+                    <div>
+                        <a href="{% url 'edit_profile' %}" class="text-[#6B98BF] font-['Ubuntu'] xl:text-lg xl:text-2xl text-xl hover:text-white transition"><i class="fa-solid fa-pencil"></i></a>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <h2 class="text-[#6B98BF] font-['Teko'] xl:text-5xl text-2xl"> 
+                        Bio
+                    </h2>
+                    <p class="text-[#6B98BF] font-['Ubuntu'] xl:text-xl text-sm">
+                        {% if user.bio %}
+                        {{ user.bio }}
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="flex justify-between w-[60%] mt-5">
+                    <a href="{{ user.instagram }}" target="_blank" class="xl:text-2xl text-xl text-[#6B98BF] hover:text-white transition"> <i class="fa-brands fa-instagram"></i> </a>
+                    <a href="{{ user.twitter }}" target="_blank" class="xl:text-2xl text-xl text-[#6B98BF] hover:text-white transition"> <i class="fa-brands fa-x-twitter"></i> </a>
+                    <a href="{{ user.youtube }}" target="_blank" class="xl:text-2xl text-xl text-[#6B98BF] hover:text-white transition"> <i class="fa-brands fa-youtube"></i> </a>
+                    <a href="{{ user.spotify }}" target="_blank" class="xl:text-2xl text-xl text-[#6B98BF] hover:text-white transition"> <i class="fa-brands fa-spotify"></i> </a>
+                </div>
+            </div>  
+        </div>       
+    </section>
+{% endblock %}

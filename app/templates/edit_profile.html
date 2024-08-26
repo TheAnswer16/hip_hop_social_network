@@ -1,0 +1,64 @@
+
+{% extends 'common/base.html' %}
+
+{% block content %}
+    <section class="h-screen">
+        <div class="flex w-[100%] justify-center">
+            <form class="flex w-[80%] flex-col justify-center h-screen" action="{% url 'edit_profile' %}" method="POST">
+                {% csrf_token %}
+                <div class="flex items-center">
+                    <div>
+                        {% if user.profile_picture %}
+                            <img src="{{ user.profile_picture }}" alt="profile" class="rounded-full w-24 h-24">
+                        {% else %}
+                            {% if user.gender == "M" %}
+                                 <img src="https://avatar.iran.liara.run/public/boy" alt="profile" class="rounded-full w-24 h-24">
+                             {% elif user.gender == "F" %}
+                                <img src="https://avatar.iran.liara.run/public/girl" alt="profile" class="rounded-full w-24 h-24">
+                            {% else %}
+                                <img src="https://avatar.iran.liara.run/public" alt="profile" class="rounded-full w-24 h-24">
+                            {% endif %}
+                        {% endif %}
+                        <input type="file" name="profile_picture" class="mt-5 font-[Ubuntu] text-[#6B98BF]">
+                    </div>
+                    <div class="ml-3">
+                        <input type="text" name="username" value="{{ user.username }}" disabled class="w-[100%] h-12 px-4 bg-[#1F3140] border-b-[#6B98BF] border-b-[1px] focus:border-b-2 text-[#6B98BF] placeholder-[#6B98BF] outline-none">
+                        <input type="text" name="full_name" value="{{ user.full_name }}" class="w-[100%] h-12 px-4 bg-[#1F3140] border-b-[#6B98BF] border-b-[1px] focus:border-b-2 text-[#6B98BF] placeholder-[#6B98BF] outline-none">
+                    </div>
+                </div>
+                <div class="mt-5 w-[100%]">
+                    <h2 class="text-[#6B98BF] font-['Teko'] xl:text-5xl text-2xl"> 
+                        Bio
+                    </h2>
+                    <textarea name="bio" class="text-[#6B98BF] font-w-[100%] w-[100%] h-12 px-4 bg-[#1F3140] border-b-[#6B98BF] border-b-[1px] focus:border-b-2 text-[#6B98BF] placeholder-[#6B98BF] outline-none">
+                        {% if user.bio %}
+                        {{ user.bio }}
+                        {% endif %}
+                    </textarea>
+                </div>
+                <div class="flex flex-col w-[60%] mt-5">
+                    <div class="flex items-center">
+                        <label class="xl:text-2xl text-xl text-[#6B98BF] hover:text-white transition"> <i class="fa-brands fa-instagram"></i> </label>
+                        <input type="url" name="instagram" class="w-[100%] h-12 px-4 bg-[#1F3140] border-b-[#6B98BF] border-b-[1px] focus:border-b-2 text-[#6B98BF] placeholder-[#6B98BF] outline-none ml-6">
+                    </div>
+                    <div class="flex items-center">
+                        <label class="xl:text-2xl text-xl text-[#6B98BF] hover:text-white transition"> <i class="fa-brands fa-x-twitter"></i> </label>
+                        <input type="url" name="twitter" class="w-[100%] h-12 px-4 bg-[#1F3140] border-b-[#6B98BF] border-b-[1px] focus:border-b-2 text-[#6B98BF] placeholder-[#6B98BF] outline-none ml-6">
+                    </div>
+                    <div class="flex items-center">
+                        <label class="xl:text-2xl text-xl text-[#6B98BF] hover:text-white transition"> <i class="fa-brands fa-youtube"></i> </label>
+                        <input type="url" name="youtube" class="w-[100%] h-12 px-4 bg-[#1F3140] border-b-[#6B98BF] border-b-[1px] focus:border-b-2 text-[#6B98BF] placeholder-[#6B98BF] outline-none ml-6">
+                    </div>
+                    <div class="flex items-center">
+                        <label class="xl:text-2xl text-xl text-[#6B98BF] hover:text-white transition"> <i class="fa-brands fa-spotify"></i> </label>
+                        <input type="url" name="spotify" class="w-[100%] h-12 px-4 bg-[#1F3140] border-b-[#6B98BF] border-b-[1px] focus:border-b-2 text-[#6B98BF] placeholder-[#6B98BF] outline-none ml-6">
+                    </div>
+                </div>
+                <div class="w-[100%] flex justify-end">
+                    <button type="submit" class="px-4 bg-[#6B98BF] text-[#0D1C26] font-['Teko'] text-lg hover:bg-[#5E88BF] mt-6"> SALVAR </button>
+                </div>
+            </form>  
+        </div>       
+    </section>
+{% endblock %}
+

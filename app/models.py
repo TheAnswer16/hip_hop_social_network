@@ -9,6 +9,7 @@ class User(AbstractUser):
     full_name = models.CharField(max_length=255)
     bio = models.TextField(blank=True, null=True)
     profile_picture = models.URLField(max_length=500, blank=True, null=True)
+    gender = models.CharField(max_length=255, blank=True, null=True)
     instagram = models.URLField(max_length=500, blank=True, null=True)
     twitter = models.URLField(max_length=500, blank=True, null=True)
     spotify = models.URLField(max_length=500, blank=True, null=True)
@@ -16,6 +17,8 @@ class User(AbstractUser):
     admin = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    USERNAME_FIELD = 'username'
 
     groups = models.ManyToManyField(
         'auth.Group',
