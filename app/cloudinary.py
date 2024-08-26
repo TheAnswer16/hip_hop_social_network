@@ -5,9 +5,7 @@ from cloudinary.utils import cloudinary_url
 class Cloudinary:
     def upload(file, fileName):
         cloudinary.config(
-            cloud_name = "",
-            api_key = "",
-            api_secret = "",
+,
             secure=True
         )
         print(file)

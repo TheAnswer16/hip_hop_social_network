@@ -90,3 +90,8 @@ class PostView(View):
         post.save()
         return redirect('home')
     
+class PostContentView(View):
+    
+    def get(self, request, post_id):
+        post = Post.objects.get(id=post_id)
+        return render(request, 'post_content.html', {'post': post})

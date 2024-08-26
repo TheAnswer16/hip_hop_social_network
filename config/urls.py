@@ -28,5 +28,6 @@ urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path('edit_profile/', EditProfile.as_view(), name='edit_profile'),
     path('post/', PostView.as_view(), name='post'),
+    path('post/<int:post_id>', PostContentView.as_view(), name='post_content'), 
 ]
 
